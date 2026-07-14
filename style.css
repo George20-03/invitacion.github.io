@@ -1011,7 +1011,7 @@ body.showButtons #scene {
 
 body.showButtons #buttons {
 
-position:relative;
+position:static;
     
 bottom:auto;
     
