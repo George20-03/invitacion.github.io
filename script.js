@@ -1,4 +1,23 @@
 // ======================================
+// ALTURA REAL DE PANTALLA EN MÓVIL
+// (evita saltos de layout por la barra del navegador)
+// ======================================
+
+function fijarAltoReal() {
+
+    const vh = window.innerHeight * 0.01;
+
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+}
+
+fijarAltoReal();
+
+window.addEventListener("resize", fijarAltoReal);
+window.addEventListener("orientationchange", fijarAltoReal);
+
+
+// ======================================
 // CUENTA ATRÁS HASTA LA BODA
 // ======================================
 
@@ -134,7 +153,9 @@ function createParticle() {
 
 }
 
-setInterval(createParticle, 180);
+const esMovil = window.innerWidth < 700 || /Mobi|Android/i.test(navigator.userAgent);
+
+setInterval(createParticle, esMovil ? 320 : 180);
 
 
 // ======================================
@@ -245,7 +266,7 @@ function sparkle() {
 
 }
 
-setInterval(sparkle, 350);
+setInterval(sparkle, esMovil ? 550 : 350);
 
 
 // ======================================
