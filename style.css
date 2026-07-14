@@ -626,11 +626,11 @@ body {
 
     height:80px;
 
-    top:50%;
+    top:75px;
 
     left:50%;
 
-    transform:translate(-50%, -50%);
+    transform:translateX(-50%);
 
         font-family:
     'Great Vibes',
@@ -725,11 +725,11 @@ body.showButtons #guestGreeting {
 
     width:84%;
 
-    left:50%;
+    left:8%;
 
     transform:
 
-    translateY(-150px)
+    translateY(-145px)
     scale(1);
 
 
@@ -759,8 +759,8 @@ body.showButtons #guestGreeting {
        agresivo de textura que difumina el texto */
     transform:
 
-    translateY(-150px)
-    scale(1.55);
+    translateY(-145px)
+    scale(1.25);
 
     box-shadow:
     0 30px 70px rgba(0,0,0,.65);
@@ -793,7 +793,6 @@ body.showButtons #guestGreeting {
 
         transform:
 
-        translate(-50%, -50%)
         scale(1.8)
         rotate(20deg);
 
@@ -982,40 +981,6 @@ body.showButtons #guestGreeting {
 .cd-item {
 
     min-width:26px;
-
-}
-
-
-/* Al abrir el sobre en móvil: en vez de superponer los botones,
-   se libera el scroll para que aparezcan deslizando hacia abajo */
-
-body.showButtons {
-
-    display:block;
-
-    height:auto;
-
-    min-height:100dvh;
-
-    overflow-y:auto;
-
-    overflow-x:hidden;
-
-}
-
-body.showButtons #scene {
-
-    margin:90px auto 0;
-
-}
-
-body.showButtons #buttons {
-
-position:static;
-    
-bottom:auto;
-    
-margin:120px auto 40px;
 
 }
 
