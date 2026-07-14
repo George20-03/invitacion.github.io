@@ -729,7 +729,7 @@ body.showButtons #guestGreeting {
 
     transform:
 
-    translateY(-50px)
+    translateY(-150px)
     scale(1);
 
 
@@ -759,8 +759,8 @@ body.showButtons #guestGreeting {
        agresivo de textura que difumina el texto */
     transform:
 
-    translateY(-50px)
-    scale(1.05);
+    translateY(-150px)
+    scale(1.55);
 
     box-shadow:
     0 30px 70px rgba(0,0,0,.65);
