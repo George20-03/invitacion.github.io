@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta           
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>JC & Lady</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;700&family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- PARTICULAS -->
+
+    <div id="particles"></div>
+
+    <!-- MUSICA -->
+
+    <audio
+        id="music"
+        loop>
+
+        <source
+            src="assets/Marcha Nupcial F Mendelssohn - Entrada de la Novia - Coro Belén [qVveeynmzok].mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+    <!-- CUENTA ATRÁS -->
+
+    <div id="countdown">
+
+        <div class="cd-item">
+            <span class="cd-number" id="cd-days">00</span>
+            <span class="cd-label">Días</span>
+        </div>
+
+        <div class="cd-sep">:</div>
+
+        <div class="cd-item">
+            <span class="cd-number" id="cd-hours">00</span>
+            <span class="cd-label">Horas</span>
+        </div>
+
+        <div class="cd-sep">:</div>
+
+        <div class="cd-item">
+            <span class="cd-number" id="cd-minutes">00</span>
+            <span class="cd-label">Min</span>
+        </div>
+
+        <div class="cd-sep">:</div>
+
+        <div class="cd-item">
+            <span class="cd-number" id="cd-seconds">00</span>
+            <span class="cd-label">Seg</span>
+        </div>
+
+    </div>
+
+    <!-- SALUDO PERSONALIZADO -->
+
+    <div id="guestGreeting"></div>
+
+    <!-- SOBRE -->
+
+    <div id="scene">
+
+        <p id="tapHint">Toca para abrir</p>
+
+        <div id="envelope">
+
+            <!-- Parte trasera -->
+
+            <div class="back"></div>
+
+            <!-- Solapa -->
+
+            <div class="flap"></div>
+
+            <!-- Carta -->
+
+            <div id="letter">
+
+                <img
+                    src="assets/INVITACION_BODA.png"
+                    alt="Invitación">
+
+            </div>
+
+            <!-- Parte frontal -->
+
+            <div class="front"></div>
+
+            <!-- Sello -->
+
+            <div id="seal">
+
+                <span>
+
+                    JC
+
+                    <br>
+
+                    &
+
+                    <br>
+
+                    Lady
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BRILLO -->
+
+    <div id="shine"></div>
+
+    <!-- BOTONES -->
+
+    <div id="buttons">
+
+        <a
+            id="maps"
+            href="#">
+
+            📍 Cómo llegar
+
+        </a>
+
+        <a
+            id="whatsapp"
+            href="#">
+
+            ❤️ Confirmar asistencia
+
+        </a>
+
+        <a
+            id="gift"
+            href="#"
+            target="_blank">
+
+            ✍️ Firmar el libro
+
+        </a>
+
+    </div>
+
+    <!-- MENSAJE -->
+
+    <div id="intro">
+
+        <h1>
+
+            Bienvenidos
+
+        </h1>
+
+        <p>
+
+            Con mucha ilusión queremos compartir uno de los días más importantes de nuestras vidas.
+
+        </p>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+    
+</html>

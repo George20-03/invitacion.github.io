@@ -1,0 +1,992 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background:
+    radial-gradient(
+        circle at center,
+        #3a3025 0%,
+        #17120d 45%,
+        #050403 100%
+    );
+
+    font-family: 'Poppins', sans-serif;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: white;
+
+}
+
+
+/* ======================================
+   PARTICULAS DORADAS
+====================================== */
+
+#particles {
+
+    position: fixed;
+
+    width:100%;
+    height:100%;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+}
+
+
+.particle {
+
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    background:#d8b45a;
+
+    border-radius:50%;
+
+    box-shadow:
+    0 0 10px #ffd76a,
+    0 0 20px #ffd76a;
+
+    animation:
+    float 8s linear infinite;
+
+}
+
+
+@keyframes float {
+
+    from {
+
+        transform:
+        translateY(110vh)
+        scale(.5);
+
+        opacity:0;
+
+    }
+
+    20% {
+
+        opacity:1;
+
+    }
+
+
+    to {
+
+        transform:
+        translateY(-20vh)
+        scale(1.4);
+
+        opacity:0;
+
+    }
+
+}
+
+
+
+/* ======================================
+   CUENTA ATRÁS
+====================================== */
+
+#countdown {
+
+    position:fixed;
+
+    top:22px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    z-index:15;
+
+    background:rgba(20,15,10,.55);
+
+    border:1px solid rgba(216,180,90,.35);
+
+    padding:10px 18px;
+
+    border-radius:14px;
+
+    backdrop-filter:blur(4px);
+
+    transition:opacity 1s ease;
+
+}
+
+#countdown.hide {
+
+    opacity:0;
+
+    pointer-events:none;
+
+}
+
+.cd-item {
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    min-width:34px;
+
+}
+
+.cd-number {
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-weight:600;
+
+    font-size:22px;
+
+    color:#f3d789;
+
+    line-height:1;
+
+}
+
+.cd-label {
+
+    font-size:9px;
+
+    letter-spacing:.5px;
+
+    text-transform:uppercase;
+
+    color:#cbb98a;
+
+    margin-top:3px;
+
+}
+
+.cd-sep {
+
+    font-size:18px;
+
+    color:#8c7a52;
+
+    margin-top:-8px;
+
+}
+
+
+/* ======================================
+   SALUDO PERSONALIZADO
+====================================== */
+
+#guestGreeting {
+
+    position:absolute;
+
+    top: calc(50% - 220px);
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    text-align:center;
+
+    z-index:11;
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:18px;
+
+    letter-spacing:1px;
+
+    color:#e8c36a;
+
+    opacity:0;
+
+    transition: opacity 1.5s ease;
+
+    pointer-events:none;
+
+}
+
+#guestGreeting.show {
+
+    opacity:1;
+
+}
+
+#guestGreeting span {
+
+    display:block;
+
+    font-family:'Great Vibes', cursive;
+
+    font-size:32px;
+
+    margin-top:4px;
+
+    color:#fff3da;
+
+}
+
+
+/* ======================================
+   ESCENA PRINCIPAL
+====================================== */
+
+
+#scene {
+
+    width:360px;
+
+    height:260px;
+
+    perspective:1200px;
+
+    perspective-origin: 50% 40%;
+
+    position:relative;
+
+    z-index:10;
+
+}
+
+
+
+/* ======================================
+   SOBRE
+====================================== */
+
+
+#envelope {
+
+    width:100%;
+
+    height:230px;
+
+    position:absolute;
+
+    top:40px;
+
+    transform-style:preserve-3d;
+
+    transition:
+    transform 2s ease;
+
+    cursor:pointer;
+
+}
+
+
+/* Invita a interactuar con el sobre antes de abrirlo */
+#scene:not(.opened) #envelope:hover {
+
+    transform: translateY(-4px) scale(1.02);
+
+}
+
+
+/* ======================================
+   TEXTO "TOCA PARA ABRIR"
+====================================== */
+
+#tapHint {
+
+    position:absolute;
+
+    bottom:-6px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    color:#e8c36a;
+
+    z-index:11;
+
+    pointer-events:none;
+
+    animation: tapPulse 2.2s ease-in-out infinite;
+
+    transition: opacity .6s ease;
+
+}
+
+@keyframes tapPulse {
+
+    0%, 100% {
+
+        opacity:.45;
+
+        transform:translateX(-50%) translateY(0);
+
+    }
+
+    50% {
+
+        opacity:1;
+
+        transform:translateX(-50%) translateY(-4px);
+
+    }
+
+}
+
+.open ~ #tapHint,
+#scene.opened #tapHint {
+
+    animation:none;
+
+    opacity:0;
+
+}
+
+
+/* ======================================
+   DESTELLO AL ABRIR
+====================================== */
+
+.flash {
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+    radial-gradient(
+        circle at 50% 45%,
+        rgba(255,244,214,.9) 0%,
+        rgba(255,244,214,0) 60%
+    );
+
+    pointer-events:none;
+
+    z-index:25;
+
+    opacity:0;
+
+    animation: flashPulse 1.1s ease-out forwards;
+
+}
+
+@keyframes flashPulse {
+
+    0% {
+
+        opacity:0;
+
+    }
+
+    15% {
+
+        opacity:1;
+
+    }
+
+    100% {
+
+        opacity:0;
+
+    }
+
+}
+
+
+
+/* partes del sobre */
+
+
+.back,
+.front,
+.flap {
+
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    border-radius:8px;
+
+}
+
+
+
+/* parte trasera */
+
+.back {
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #f7efe2,
+    #d8c4a4
+    );
+
+    box-shadow:
+
+    0 30px 50px rgba(0,0,0,.5);
+
+}
+
+
+
+/* parte frontal */
+
+.front {
+
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #fffaf0,
+    #d9c5a5
+    );
+
+
+    clip-path:
+
+    polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%
+    );
+
+    z-index:3;
+
+}
+
+
+
+/* solapa */
+
+.flap {
+
+
+    height:130px;
+
+
+    background:
+
+    linear-gradient(
+    145deg,
+    #fff8ea,
+    #ccb58c
+    );
+
+
+    transform-origin:top;
+
+
+    clip-path:
+
+    polygon(
+    0 0,
+    100% 0,
+    50% 100%
+    );
+
+
+    z-index:4;
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+
+    transition:
+    transform 1.8s ease-in-out;
+
+
+}
+
+
+
+
+/* ======================================
+   CARTA
+====================================== */
+
+
+#letter {
+
+    position:absolute;
+
+    width:70%;
+
+    height:auto;
+
+    left:15%;
+
+    top:20px;
+
+    background:white;
+
+    overflow:hidden;
+
+    transform:
+    translateY(80px)
+    scale(.65);
+
+    opacity:0;
+
+    filter: blur(6px);
+
+    transition:
+    transform 1.6s 1s cubic-bezier(.22,1,.36,1),
+    opacity 1.4s 1.1s ease,
+    filter 1.4s 1.1s ease;
+
+    z-index:6;
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.5);
+
+    /* Fuerza al navegador a rasterizar la capa a resolución nativa
+       en vez de reescalar una textura ya generada (evita el blur
+       típico al animar transform dentro de un contexto 3D) */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: transform;
+
+}
+
+
+
+#letter img {
+
+
+    width:100%;
+
+    height:auto;
+
+    display:block;
+
+    /* Mejora el algoritmo de reescalado del navegador para fotos/texto */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: high-quality;
+
+
+}
+
+
+
+
+/* ======================================
+   SELLO DE CERA
+====================================== */
+
+
+#seal {
+
+    position:absolute;
+
+    width:80px;
+
+    height:80px;
+
+    top:75px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+        font-family:
+    'Great Vibes',
+    cursive;
+
+    background:
+    radial-gradient(
+        circle,
+        #d6a437,
+        #8c5b12
+    );
+
+    border-radius:50%;
+
+    z-index:10;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+}
+
+
+
+@keyframes pulse {
+
+
+    50% {
+
+        transform:
+        translateX(-50%)
+        scale(1.08);
+
+    }
+
+}
+
+
+
+/* ======================================
+   ESTADO ABIERTO
+====================================== */
+
+
+body.showButtons #intro {
+
+    opacity:0;
+
+    transition:1s;
+
+}
+
+
+body.showButtons #guestGreeting {
+
+    opacity:0;
+
+    transition:1s;
+
+}
+
+
+
+.open ~ #intro {
+
+    opacity:0;
+
+    transition:1s;
+
+}
+
+
+.open .flap {
+
+    transform:
+
+    rotateX(180deg);
+
+    box-shadow:
+    0 -15px 25px rgba(0,0,0,.25);
+
+}
+
+
+
+.open #letter {
+
+
+    width:84%;
+
+    left:8%;
+
+    transform:
+
+    translateY(-145px)
+    scale(1);
+
+
+    opacity:1;
+
+    filter: blur(0px);
+
+    cursor: pointer;
+
+    transition:
+    transform 1.6s 1s cubic-bezier(.22,1,.36,1),
+    opacity 1.4s 1.1s ease,
+    filter 1.4s 1.1s ease,
+    box-shadow .4s ease,
+    width 1.6s 1s cubic-bezier(.22,1,.36,1),
+    left 1.6s 1s cubic-bezier(.22,1,.36,1);
+
+
+}
+
+
+
+.open #letter:hover {
+
+    /* La carta ya es más grande por defecto (width:84%), así que el
+       hover solo necesita un empuje mínimo, evitando el reescalado
+       agresivo de textura que difumina el texto */
+    transform:
+
+    translateY(-145px)
+    scale(1.25);
+
+    box-shadow:
+    0 30px 70px rgba(0,0,0,.65);
+
+    z-index:20;
+
+    transition:
+    transform .45s ease,
+    box-shadow .45s ease;
+
+}
+
+
+
+.open #seal {
+
+
+    animation:
+
+    breakSeal .5s forwards;
+
+
+}
+
+
+@keyframes breakSeal {
+
+
+    to {
+
+        transform:
+
+        scale(1.8)
+        rotate(20deg);
+
+        opacity:0;
+
+    }
+
+}
+
+
+
+/* ======================================
+   TEXTO DE INTRODUCCIÓN
+====================================== */
+
+
+#intro {
+
+    position:absolute;
+
+    bottom:40px;
+
+    width:90%;
+
+    text-align:center;
+
+    z-index:2;
+
+    pointer-events:none;
+
+}
+
+
+
+
+#intro h1 {
+
+
+    font-family:
+    'Great Vibes',
+    cursive;
+
+
+    font-size:50px;
+
+
+    color:#e8c36a;
+
+
+}
+
+
+
+#intro p {
+
+
+    margin-top:10px;
+
+
+    font-size:14px;
+
+
+    color:#ddd;
+
+
+}
+
+
+
+
+/* ======================================
+   BOTONES
+====================================== */
+
+
+#buttons {
+
+
+    position:absolute;
+
+
+    bottom:20px;
+
+
+    display:flex;
+
+
+    gap:15px;
+
+
+    opacity:0;
+
+
+    transition:1s;
+
+
+}
+
+
+
+#buttons a {
+
+
+    text-decoration:none;
+
+
+    color:#fff;
+
+
+    background:
+
+    rgba(200,150,50,.8);
+
+
+    padding:12px 18px;
+
+
+    border-radius:30px;
+
+
+    font-size:13px;
+
+
+}
+
+
+
+.showButtons #buttons {
+
+    opacity:1;
+
+}
+
+
+
+
+/* ======================================
+   RESPONSIVE MOVIL
+====================================== */
+
+
+@media(max-width:600px){
+
+
+#scene {
+
+    width:320px;
+
+}
+
+
+#seal {
+
+    left:120px;
+
+}
+
+
+#intro h1 {
+
+    font-size:40px;
+
+}
+
+
+#buttons {
+
+
+    flex-direction:column;
+
+}
+
+
+#countdown {
+
+    top:14px;
+
+    gap:6px;
+
+    padding:8px 12px;
+
+}
+
+.cd-number {
+
+    font-size:17px;
+
+}
+
+.cd-item {
+
+    min-width:26px;
+
+}
+
+
+
+}
