@@ -1011,11 +1011,9 @@ body.showButtons #scene {
 
 body.showButtons #buttons {
 
-    position:static;
-
-    bottom:auto;
-
-    margin:110px auto 30px;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 40px;
 
 }
 
