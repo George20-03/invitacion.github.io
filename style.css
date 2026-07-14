@@ -9,6 +9,7 @@ body {
 
     width: 100%;
     height: 100vh;
+    height: 100dvh; /* usa la altura visible real en móviles (evita el hueco por la barra del navegador) */
 
     overflow: hidden;
 
@@ -625,11 +626,11 @@ body {
 
     height:80px;
 
-    top:75px;
+    top:50%;
 
     left:50%;
 
-    transform:translateX(-50%);
+    transform:translate(-50%, -50%);
 
         font-family:
     'Great Vibes',
@@ -792,6 +793,7 @@ body.showButtons #guestGreeting {
 
         transform:
 
+        translate(-50%, -50%)
         scale(1.8)
         rotate(20deg);
 
@@ -888,6 +890,9 @@ body.showButtons #guestGreeting {
     transition:1s;
 
 
+    z-index:30;
+
+
 }
 
 
@@ -939,13 +944,6 @@ body.showButtons #guestGreeting {
 #scene {
 
     width:320px;
-
-}
-
-
-#seal {
-
-    left:120px;
 
 }
 
