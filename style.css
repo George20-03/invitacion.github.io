@@ -725,11 +725,11 @@ body.showButtons #guestGreeting {
 
     width:84%;
 
-    left:8%;
+    left:50%;
 
     transform:
 
-    translateY(-145px)
+    translateY(-50px)
     scale(1);
 
 
