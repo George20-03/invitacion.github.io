@@ -986,5 +986,39 @@ body.showButtons #guestGreeting {
 }
 
 
+/* Al abrir el sobre en móvil: en vez de superponer los botones,
+   se libera el scroll para que aparezcan deslizando hacia abajo */
+
+body.showButtons {
+
+    display:block;
+
+    height:auto;
+
+    min-height:100dvh;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+}
+
+body.showButtons #scene {
+
+    margin:90px auto 0;
+
+}
+
+body.showButtons #buttons {
+
+    position:static;
+
+    bottom:auto;
+
+    margin:60px auto 60px;
+
+}
+
+
 
 }
