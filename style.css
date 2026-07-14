@@ -874,7 +874,7 @@ body.showButtons #guestGreeting {
     position:absolute;
 
 
-    bottom:20px;
+    bottom:-80px;
 
 
     display:flex;
