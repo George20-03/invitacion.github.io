@@ -286,7 +286,7 @@ window.addEventListener("deviceorientation", e => {
 // BOTÓN WHATSAPP
 // ======================================
 
-document.getElementById("whatsapp").href = "https://wa.me/34600000000?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda.";
+document.getElementById("whatsapp").href = "https://wa.me/34648290095?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda.";
 
 
 // ======================================
